@@ -1,0 +1,864 @@
+PRACTICAL NO – 01
+
+AIM : WRITE A PYTHON PROGRAM TO PERFORM MATRIX MULTIPLICATION.
+
+CODE :
+
+def matrix():
+    print("Sanjana Rane Rollno:S095")
+    matrix1 = [[[]for x in range(3)]for x in range(3)]
+    print("ENTER THE ELEMENTS OF FIRST MATRIX : ")
+    for x in range(3):
+        print("ROW "+str(x+1)+" ELEMENTS")
+        for y in range(3):
+            matrix1[x][y] = int(input("ENTER THE ELEMENTS :"))
+
+    print("THE ELEMENTS OF FIRST MATRIX IS:")
+    for p in matrix1:
+       print(p)
+
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("ENTER THE ELEMENTS OF SECOND MATRIX : ")
+    matrix2 = [[[]for x in range(3)]for x in range(3)]
+    for x in range(3):
+        print("ROW "+str(x+1)+" ELEMENTS")
+        for y in range(3):
+            matrix2[x][y] = int(input("ENTER THE ELEMENTS :"))
+
+
+    print("THE ELEMENTS OF SECOND MATRIX IS:")
+    for p in matrix2:
+       print(p)
+
+    print("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    result = [[0,0,0],
+             [0,0,0],
+             [0,0,0]]
+
+    print("THE RESULT MATRIX MULTIPLICATION IS:")
+    for x in range(len(matrix1)):
+       
+       for y in range(len(matrix2[0])):
+           
+           for z in range(len(matrix2)):
+               result[x][y] += matrix1[x][z] * matrix2[z][y]
+
+    for p in result:
+       print(p)
+
+matrix()
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 02
+
+AIM : WRITE A PYTHON PROGRAM TO SORT N NAMES USING Merge ALGORITHM.
+
+CODE :
+print("Sanjana Rane Rollno:S095")
+def mergeSort(alist):
+    print("Splitting ",alist)
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+        
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+        m=0
+        n=0
+        p=0
+        while m < len(lefthalf) and n < len(righthalf):
+            if lefthalf[m] < righthalf[n]:
+                alist[p]=lefthalf[m]
+                m=m+1
+            else:
+                alist[p]=righthalf[n]
+                n=n+1
+            p=p+1
+
+        while m < len(lefthalf):
+            alist[p]=lefthalf[m]
+            m=m+1
+            p=p+1
+
+        while n < len(righthalf):
+            alist[p]=righthalf[n]
+            n=n+1
+            p=p+1
+    print("Merging ",alist)
+alist = []
+sp=int(input("ENTER NUMBER OF INPUTS : "))
+for i in range(sp):
+    u=int(input("ENTER THE "+str(i+1)+" NUMBER:"))
+    alist.append(u)
+mergeSort(alist)
+print(alist)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 03
+
+AIM : WRITE A PYTHON PROGRAM TO SORT N NUMBERS USING Quick SORT ALGORITHM.
+
+CODE :
+
+print("Sanjana Rane Rollno:S095")
+def QuickSort():
+   no_Of_Elements = int(input("ENTER THE NUMBER OF STRINGS : "))
+   def quickSort(data_list):
+      quickSortHlp(data_list,0,len(data_list)-1)
+
+   def quickSortHlp(data_list,first,last):
+      if first < last:
+          splitpoint = partition(data_list,first,last)
+          quickSortHlp(data_list,first,splitpoint-1)
+          quickSortHlp(data_list,splitpoint+1,last)
+
+
+   def partition(data_list,first,last):
+      pivotvalue = data_list[first]
+      lmark = first+1
+      rmark = last
+      done = False
+      while not done:
+
+          while lmark <= rmark and data_list[lmark] <= pivotvalue:
+              lmark = lmark + 1
+
+          while data_list[rmark] >= pivotvalue and rmark >= lmark:
+              rmark = rmark -1
+
+          if rmark < lmark:
+              done = True
+          else:
+              temp = data_list[lmark]
+              data_list[lmark] = data_list[rmark]
+              data_list[rmark] = temp
+
+      temp = data_list[first]
+      data_list[first] = data_list[rmark]
+      data_list[rmark] = temp
+
+
+      return rmark
+
+
+   data_list = []
+
+   for i in range(0,no_Of_Elements):
+       val=input("ENTER THE "+str(i+1)+" STRING:")
+       data_list.append(val)
+   
+   print("THE INPUT STRINGS ARE: ")
+   print(data_list)
+   print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+   quickSort(data_list)
+   print("THE SORTED LIST OF STRING IS: ")
+   print(data_list)
+QuickSort()
+PRACTICAL NO – 04
+
+ AIM : WRITE A PYTHON PROGRAM TO FIND THE SMALLEST AND LARGEST ELEMENT IN AN ARRAY ‘A’ OF SIZE N USING SELECTION ALGORITHM.
+
+CODE :
+
+print(' Sanjana Rane Rollno:S095')
+def selection_sort(sl):
+    for a in range(len(sl)):
+        for b in range(len(sl) - 1):
+            if sl[b] > sl[b + 1]:
+                sl[b], sl[b + 1] = sl[b + 1], sl[b]
+    print('\nThe smallest element is : ',min(sl))
+    print('\nThe largest element is : ',max(sl)) 
+    print('\n\nThe sorted list : ',sl)
+
+
+lst = []
+s = int(input("Enter the number of elements : \t"))
+
+for i in range(s):
+        elements = int(input("Enter the element : \t"))
+        lst.append(elements)
+
+selection_sort(lst)
+
+
+
+
+
+PRACTICAL NO – 05
+
+AIM : WRITE A PYTHON PROGRAM TO FIND THE SMALLEST AND LARGEST ELEMENT IN AN ARRAY ‘A’ OF SIZE N USING BUUBLE SORT ALGORITHM.
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+def Bubble_sort(sl):
+    for a in range(len(sl)):
+        smallest_element = min(sl[a:])
+        index_of_smallest = sl.index(smallest_element)
+        sl[a], sl[index_of_smallest] = sl[index_of_smallest], sl[a]
+        print('\nPASS :', a + 1, sl)
+    print('\nThe smallest element is : ',min(sl))
+    print('\nThe largest element is :',max(sl))
+    print ('\nThe sorted list : \t', sl)
+
+lst = []
+s= int(input("Enter the number of elements : \t"))
+for a in range(s):
+    elements = int(input("Enter the element : \t"))
+    lst.append(elements)
+Bubble_sort(lst)
+
+
+
+
+
+
+
+PRACTICAL NO – 06
+
+AIM : WRITE A PYTHON PROGRAM TO FIND THE SMALLEST AND LARGEST ELEMENT IN AN ARRAY ‘A’ OF SIZE N USING HEAP SORT ALGORITHM .
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+def heapsort(lst):
+    build_max_heap(lst)
+    for i in range(len(lst) - 1, 0, -1):
+        lst[0], lst[i] = lst[i], lst[0]
+        max_heapify(lst, index=0, size=i)
+ 
+def parent(i):
+    return (i - 1)//2
+ 
+def left(i):
+    return 2*i + 1
+ 
+def right(i):
+    return 2*i + 2
+ 
+def build_max_heap(lst):
+    length = len(lst)
+    start = parent(length - 1)
+    while start >= 0:
+        max_heapify(lst, index=start, size=length)
+        start = start - 1
+ 
+def max_heapify(lst, index, size):
+    l = left(index)
+    r = right(index)
+    if (l < size and lst[l] > lst[index]):
+        largest = l
+    else:
+        largest = index
+    if (r < size and lst[r] > lst[largest]):
+        largest = r
+    if (largest != index):
+        lst[largest], lst[index] = lst[index], lst[largest]
+        max_heapify(lst, largest, size)
+
+ 
+lst=[]
+s = int(input("Enter the number of elements : \t"))
+for i in range(s):
+    elements = int(input("Enter the element : \t"))
+    lst.append(elements)
+    heapsort(lst)
+
+print('\nThe smallest element is : ',min(lst))
+print('\nThe largest element is : ',max(lst))
+print('\nThe sorted list : ', end='')
+print(lst)
+
+
+
+
+
+
+PRACTICAL NO – 07
+
+AIM : WRITE A PROGRAM TO FIND BREADTH FIRST SEARCH.
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+A=input("Enter value for A : ")
+B=input("Enter value for B : ")
+C=input("Enter value for C : ")
+D=input("Enter value for D : ")
+E=input("Enter value for E : ")
+F=input("Enter value for F : ")
+
+G = {A: [B, C],
+         B: [A,D, E],
+         C: [A, F],
+         D: [B],
+         E: [B,F],
+         F: [C,E]}
+print('The Set of graph are : ',G)
+
+
+def bfs(G, start):
+    
+    explored = []
+    
+    queue = [start]
+
+    levels = {}         
+    levels[start]= 0    
+
+    visited= [start]     
+
+    while queue:
+       
+        node = queue.pop(0)
+        explored.append(node)
+        neighbours = G[node]
+
+        
+        for neighbour in neighbours:
+            if neighbour not in visited:
+                queue.append(neighbour)
+                visited.append(neighbour)
+
+                levels[neighbour]= levels[node]+1
+                
+
+    print('The levels are : ',levels)
+
+    return explored
+print(G)
+BFS = bfs(G,A) 
+print('The Sorted Breadth_First_Search is : ',BFS)
+
+
+
+
+PRACTICAL NO – 08
+
+AIM ; WRITE A PYTHON PROGRAM TO DO DEPTH FIRST SEARCH .
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+A=input("Enter value for A : ")
+B=input("Enter value for B : ")
+C=input("Enter value for C : ")
+D=input("Enter value for D : ")
+E=input("Enter value for E : ")
+F=input("Enter value for F : ")
+H=input("Enter value for H : ")
+S=input("Enter value for S : ")
+G = {
+    A : [B,S],
+    B : [A],
+    C : [D,E,F,S],
+    D : [C],
+    E : [C,H],
+    F : [C,A],
+    H : [E,C],
+    S : [A,C,D]}
+
+def dfs(graph, node, visited):
+    if node not in visited:
+        visited.append(node)
+        for n in graph[node]:
+            dfs(graph,n, visited)
+    return visited
+print('The Set of graph are : ',G)
+
+visited = dfs(G,A, [])
+print('The Sorted depth_first_search is : ',visited)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 09
+
+AIM : WRITE A PYTHON PROGRAM FOR BINARY TREE.
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+class Tree:
+
+    def __init__(self, item):
+
+        self.left = None
+        self.right = None
+        self.item = item
+
+    def insert(self, item):
+# Compare the new value with the parent node
+        if self.item:
+            if item < self.item:
+                if self.left is None:
+                    self.left = Tree(item)
+                else:
+                    self.left.insert(item)
+            elif item > self.item:
+                if self.right is None:
+                    self.right = Tree(item)
+                else:
+                    self.right.insert(item)
+        else:
+            self.item = item
+
+# Print the tree
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print( self.item),
+        if self.right:
+            self.right.PrintTree()
+
+# Use the insert method to add nodes
+node=int(input("Enter the number of  nodes : "))
+num=int(input("Enter the number of elements : "))
+root=Tree(node)
+for a in range(num):
+    v=int(input("Enter the values of the element : "))
+    root.insert(v)
+root.PrintTree()
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 10
+
+AIM ; WRITE A PYTHON PROGRAM TO FIND SHORTEST PATH FIRST .
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+A=input("Enter value for A : ")
+B=input("Enter value for B : ")
+C=input("Enter value for C : ")
+D=input("Enter value for D : ")
+E=input("Enter value for E : ")
+F=input("Enter value for F : ")
+
+G = {A: [B, C],
+         B: [A,D, E],
+         C: [A, F],
+         D: [B],
+         E: [B,F],
+         F: [C,E]}
+print('The Set of graph are : ',G)
+
+def shortest_path(graph, start, end):
+    # keep track of explored nodes
+    explored = []
+    # keep track of all the paths to be checked
+    queue = [start]
+ 
+    # return path if start is goal
+    if start == end:
+        return "That was easy! Start = goal"
+ 
+    # keeps looping until all possible paths have been checked
+    while queue:
+        # pop the first path from the queue
+        path = queue.pop(0)
+        # get the last node from the path
+        node = path[-1]
+        if node not in explored:
+            neighbours = graph[node]
+            # go through all neighbour nodes, construct a new path and
+            # push it into the queue
+            for neighbour in neighbours:
+                new_path = list(path)
+                new_path.append(neighbour)
+                queue.append(new_path)
+                # return path if neighbour is goal
+                if neighbour == end:
+                    return new_path
+ 
+            # mark node as explored
+            explored.append(node)
+ 
+    
+print(G)
+BFS = shortest_path(G,A,D) 
+print('The shortest_path is : ',BFS)
+
+
+PRACTICAL NO – 11
+ 
+ AIM : WRITE A PYTHON PROGRAM FOR FINDING THE SECOND LARGEST ELEMENT IN AN ARRAY A OF SIZE N USING TOURNAMENT METHOD.
+DISCUSS TIME COMPLEXITY.
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+list1 = [] 
+  
+# asking number of elements to put in list 
+num = int(input("Enter number of elements in list : ")) 
+  
+# iterating till num to append elements in list 
+for i in range(1, num + 1): 
+    ele = int(input("Enter elements : ")) 
+    list1.append(ele) 
+  
+
+# sort the list     
+list1.sort() 
+      
+print (list1) 
+print("Second largest element is : ", list1[-2]) 
+  
+
+  
+# print second maximum element using sorted() method 
+#print("Second largest element is:", sorted(list1)[-2]) 
+
+PRACTICAL NO – 12
+
+AIM : WRITE A PYTHON PROGRAM FOR IMPLEMENTING  HUFFMAN CODING ALGORITHM .
+DISCUSS THE COMPLEXITY OF THE ALGORITHM .
+
+CODE :
+
+print('Sanjana Rane Rollno:S095)
+
+import heapq
+from collections import defaultdict
+
+
+def huffman(freq):
+    heap = [[weight, [sym, '']] for sym, weight in freq.items()]
+    heapq.heapify(heap)
+    while len(heap) > 1:
+        lo = heapq.heappop(heap)
+        hi = heapq.heappop(heap)
+        for pair in lo[1:]:
+            pair[1] = '0' + pair[1]
+        for pair in hi[1:]:
+            pair[1] = '1' + pair[1]
+        heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
+    return sorted(heapq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
+
+string=[]
+string=input("Take input from the User: ")
+freq = defaultdict(int)
+for sym in string:
+    freq[sym] += 1
+
+huff = huffman(freq)
+print ("Symbol".ljust(10) + "Weight".ljust(10) + "Huffman Code")
+for p in huff:
+    print (p[0].ljust(10) + str(freq[p[0]]).ljust(10) + p[1])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 13
+
+AIM : WRITE A PYTHON PROGRAM TO FIND ITERRATIVE DEPTH FIRST SEARCH .
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+A=input("Enter value for A : ")
+B=input("Enter value for B : ")
+C=input("Enter value for C : ")
+D=input("Enter value for D : ")
+E=input("Enter value for E : ")
+F=input("Enter value for F : ")
+G=input("Enter value for G : ")
+
+def dfs_iterative(graph, start):
+    stack, path = [start], []
+
+    while stack:
+        vertex = stack.pop()
+        if vertex in path:
+            continue
+        path.append(vertex)
+        for neighbor in graph[vertex]:
+            stack.append(neighbor)
+
+    return path
+
+
+adjacency_matrix = {A: [B, C], B: [D, E],
+                    C: [E], D: [F], E: [F],
+                    F: [G], G: []}
+
+print(dfs_iterative(adjacency_matrix, A))
+# [1, 3, 5, 6, 7, 2, 4]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PRACTICAL NO – 14
+
+AIM : WRITE A PYTHON PROGRAM FOR IMPEMENTING STRASSEN’S MATRIX MULTIPLICATION USING DIDIVE AND CONQUER METHOD.
+DISCUSS THE COMPLEXITY OF ALGORITHM.
+
+CODE :
+
+print('Sanjana Rane Rollno:S095')
+
+print("Enter values for 2x2 matrix : ")
+print("matrix a")
+m1=int(input("Enter value for A : "))
+m2=int(input("Enter value for B : "))
+m3=int(input("Enter value for C : "))
+m4=int(input("Enter value for D : "))
+print("matrix b")
+m5=int(input("Enter value for E : "))
+m6=int(input("Enter value for F : "))
+m7=int(input("Enter value for E : "))
+m8=int(input("Enter value for F : "))
+def Strassen_matrix_multiplication(a, b):
+    """
+    Only for 2x2 matrices
+    """
+    if len(a) != 2 or len(a[0]) != 2 or len(b) != 2 or len(b[0]) != 2:
+        raise Exception('Matrices should be 2x2!')
+    print(a[0][0] * b[0][1] + a[0][1] * b[1][1])
+    matrix = [[a[0][0] * b[0][0] + a[0][1] * b[1][0], a[0][0] * b[0][1] + a[0][1] * b[1][1]],
+                  [a[1][0] * b[0][0] + a[1][1] * b[1][0], a[1][0] * b[0][1] + a[1][1] * b[1][1]]]
+
+    return matrix
+
+
+def add(a, b):
+    # print(matrix_a)
+    return [[a[row][col] + b[row][col]
+             for col in range(len(a[row]))] for row in range(len(a))]
+
+
+def subtract(a, b):
+    return [[a[row][col] - b[row][col]
+             for col in range(len(a[row]))] for row in range(len(a))]
+
+
+def split(a):
+    """
+    Given a matrix, return the TOP_LEFT, TOP_RIGHT, BOT_LEFT and BOT_RIGHT quadrant
+    """
+    if len(a) % 2 != 0 or len(a[0]) % 2 != 0:
+        raise Exception('Odd matrices are not supported!')
+
+    length = len(a)
+    mid = length // 2
+    top_left = [[a[i][j] for j in range(mid)] for i in range(mid)]
+    bottom_left = [[a[i][j] for j in range(mid)] for i in range(mid, length)]
+
+    top_right = [[a[i][j] for j in range(mid, length)] for i in range(mid)]
+    bottom_right = [[a[i][j] for j in range(mid, length)] for i in range(mid, length)]
+
+    return top_left, top_right, bottom_left, bottom_right
+
+
+def dimensions(matrix):
+    return len(matrix), len(matrix[0])
+
+
+def strassen_matrix(a, b):
+    """
+    Recursive function to calculate the product of two matrices, using the Strassen Algorithm.
+    Currently only works for matrices of even length (2x2, 4x4, 6x6...etc)
+    """
+    if dimensions(a) != dimensions(b):
+        raise Exception(f'Both matrices are not the same dimension! \nMatrix A:{matrix_a} \nMatrix B:{matrix_b}')
+    if dimensions(a) == (2, 2):
+        return Strassen_matrix_multiplication(a, b)
+
+    A, B, C, D = split(a)
+    E, F, G, H = split(b)
+
+    num1 = strassen(A, subtract(F, H))
+    num2 = strassen(add(A, B), H)
+    num3 = strassen(add(C, D), E)
+    num4 = strassen(D, subtract(G, E))
+    num5 = strassen(add(A, D), add(E, H))
+    num6 = strassen(subtract(B, D), add(G, H))
+    num7 = strassen(subtract(A, C),add(E, F))
+
+    top_left = add(subtract(add(num5, num4), num2), num6)
+    top_right = add(num1,num2)
+    bot_left = add(num3, num4)
+    bot_right = subtract(subtract(add(num1, num5), num3), num7)
+
+    # construct the new matrix from our 4 quadrants
+    new_matrix = []
+    for i in range(len(top_right)):
+        new_matrix.append(top_left[i] + top_right[i])
+    for i in range(len(bottom_right)):
+        new_matrix.append(bottom_left[i] + bottom_right[i])
+    return new_matrix
+
+
+a = [[m1,m2],
+    [m3,m4]]
+b = [[m5,m6],
+    [m7,m8]]
+result = [[0,0],
+             [0,0]]
+for i in range(len(a)):
+       # iterate through columns of Y
+       for j in range(len(b[0])):
+           # iterate through rows of Y
+           for k in range(len(b)):
+               result[i][j] += b[i][k] * b[k][j]
+for r in result:
+    print(r)
+
+       
+
+
+strassen_matrix(a,b)
+PRACTICAL NO – 15
+
+AIM : WRITE A PYTHON PROGRAM USING DIVIDE AND CONQUER ALGORITM .
+
+CODE :
+
+print("Sanjana Rane Rollno:S095")
+
+def find_max_subarray(alist, start, end):
+    """Returns (l, r, m) such that alist[l:r] is the maximum subarray in
+    A[start:end] with sum m. Here A[start:end] means all A[x] for start <= x <
+    end."""
+    if start == end - 1:
+        return start, end, alist[start]
+    else:
+        mid = (start + end)//2
+        left_start, left_end, left_max = find_max_subarray(alist, start, mid)
+        right_start, right_end, right_max = find_max_subarray(alist, mid, end)
+        cross_start, cross_end, cross_max = find_max_crossing_subarray(alist, start, mid, end)
+        if (left_max > right_max and left_max > cross_max):
+            return left_start, left_end, left_max
+        elif (right_max > left_max and right_max > cross_max):
+            return right_start, right_end, right_max
+        else:
+            return cross_start, cross_end, cross_max
+ 
+def find_max_crossing_subarray(alist, start, mid, end):
+    """Returns (l, r, m) such that alist[l:r] is the maximum subarray within
+    alist with start <= l < mid <= r < end with sum m. The arguments start, mid,
+    end must satisfy start <= mid <= end."""
+    sum_left = float('-inf')
+    sum_temp = 0
+    cross_start = mid
+    for i in range(mid - 1, start - 1, -1):
+        sum_temp = sum_temp + alist[i]
+        if sum_temp > sum_left:
+            sum_left = sum_temp
+            cross_start = i
+ 
+    sum_right = float('-inf')
+    sum_temp = 0
+    cross_end = mid + 1
+    for i in range(mid, end):
+        sum_temp = sum_temp + alist[i]
+        if sum_temp > sum_right:
+            sum_right = sum_temp
+            cross_end = i + 1
+    return cross_start, cross_end, sum_left + sum_right
+ 
+alist = input('Enter the list of numbers: ')
+alist = alist.split()
+alist = [int(x) for x in alist]
+start, end, maximum = find_max_subarray(alist, 0, len(alist))
+print('The maximum subarray starts at index {}, ends at index {}'
+      ' and has sum {}.'.format(start, end - 1, maximum))
